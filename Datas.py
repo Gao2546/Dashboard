@@ -34,9 +34,9 @@ class data:
         return l_data
     def read_data(self,data):
         if (re.split('_',data)[-1] == 'contract.csv') or (re.split('_',data)[-1] == 'clean.csv'):
-            return pd.read_csv(self.dir+'/'+data,encoding='utf-8')
+            return pd.read_csv(self.dir+'/'+data,encoding='utf-8',index_col=False)
         else:
-            return pd.read_csv(self.dir+'/'+data,usecols=[0,2,3,4],encoding='utf-8')
+            return pd.read_csv(self.dir+'/'+data,usecols=[0,2,3,4],encoding='utf-8',index_col=False)
 
 def cleandata(df):
     subdep_name = df['subdep_name'].unique()
@@ -84,7 +84,8 @@ def cleandata(df):
                    re.findall("การไฟฟ้าส่วนภูมิภาค",subdep_name[start]) and re.findall("การไฟฟ้าส่วนภูมิภาค",subdep_name[curr]) or 
                    re.findall("การประปาส่วนภูมิภาค",subdep_name[start]) and re.findall("การประปาส่วนภูมิภาค",subdep_name[curr]) or 
                    re.findall("กศน.",subdep_name[start]) and re.findall("กศน.",subdep_name[curr]) or 
-                   re.findall("วิทยาลัยเทคนิค.",subdep_name[start]) and re.findall("วิทยาลัยเทคนิค.",subdep_name[curr])
+                   re.findall("วิทยาลัยเทคนิค.",subdep_name[start]) and re.findall("วิทยาลัยเทคนิค.",subdep_name[curr]) or
+                   re.findall("กลุ่มงานเภสัชกรรม",subdep_name[start]) and re.findall("กลุ่มงานเภสัชกรรม",subdep_name[curr])
                    ): 
                 #print(subdep_name[curr])
                 if u/int((max(ls))//1) < 0.65 or len(subdep_name[curr]) < 20 :
