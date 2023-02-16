@@ -120,5 +120,4 @@ def cleandata(df):
             break
     return mapping
 
-    
-        
+
