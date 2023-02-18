@@ -82,6 +82,12 @@ app.layout = html.Div(
                             options=[
                                 dict(label=be, value=be) for be in list(data.data["2562"].keys())
                             ],
+                            style={
+                                "textAlign": "center",
+                                "color": "#454241",
+                                "margin-top": "5px",
+                                
+                            },
                             id="month",
                             value=list(data.data["2562"].keys())[0],
                         ),
@@ -90,6 +96,12 @@ app.layout = html.Div(
                                 dict(label=et, value=et)
                                 for et in list(data.data["2562"]["may"].keys())
                             ],
+                            style={
+                                "textAlign": "center",
+                                "color": "#454241",
+                                "margin-top": "5px",
+                                
+                            },
                             id="month_p",
                             value=list(data.data["2562"]["may"].keys())[0],
                         ),
