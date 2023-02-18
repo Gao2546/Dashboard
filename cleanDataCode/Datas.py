@@ -85,7 +85,8 @@ def cleandata(df):
                    re.findall("การประปาส่วนภูมิภาค",subdep_name[start]) and re.findall("การประปาส่วนภูมิภาค",subdep_name[curr]) or 
                    re.findall("กศน.",subdep_name[start]) and re.findall("กศน.",subdep_name[curr]) or 
                    re.findall("วิทยาลัยเทคนิค.",subdep_name[start]) and re.findall("วิทยาลัยเทคนิค.",subdep_name[curr]) or
-                   re.findall("กลุ่มงานเภสัชกรรม",subdep_name[start]) and re.findall("กลุ่มงานเภสัชกรรม",subdep_name[curr])
+                   re.findall("กลุ่มงานเภสัชกรรม",subdep_name[start]) and re.findall("กลุ่มงานเภสัชกรรม",subdep_name[curr]) or
+                   re.findall("สำนักงานสาธารณสุข",subdep_name[start]) and re.findall("สำนักงานสาธารณสุข",subdep_name[curr])
                    ): 
                 #print(subdep_name[curr])
                 if u/int((max(ls))//1) < 0.65 or len(subdep_name[curr]) < 20 :
