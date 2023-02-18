@@ -12,7 +12,7 @@ colors = {"background": "#111111", "text": "#7FDBFF"}
 # see https://plotly.com/python/px-arguments/ for more options
 data = Datas.data()
 l_data = data.add_all_in_folder("use_data_by_class_T")
-print(l_data)
+
 # power = df[df["emission_type"].str.contains("ภาคพลังงาน")]
 
 
@@ -24,7 +24,6 @@ print(l_data)
 def show_data(month, month_p):
     print(month, month_p)
     data_ = data.read_data(data.data["2562"][month][month_p]["clean"])
-    print(data)
     # print(filtered_df)
     fig = px.pie(
         data_,
@@ -42,7 +41,7 @@ app.layout = html.Div(
         html.Div(
             children=[
                 html.H1(
-                    children="Hello Dash",
+                    children="Public sector procurement report, fiscal year 2019",
                     style={
                         "textAlign": "center",
                     },
@@ -53,7 +52,7 @@ app.layout = html.Div(
         html.Div(
             children=[
                 html.Div(
-                    children="Dash: A web application framework for your data.",
+                    children="march - oct 2019",
                     style={
                         "textAlign": "center",
                     },
