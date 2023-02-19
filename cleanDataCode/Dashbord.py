@@ -6,7 +6,6 @@ import Datas
 
 app = Dash(__name__, external_stylesheets=[dbc.themes.CYBORG])
 
-colors = {"background": "#111111", "text": "#7FDBFF"}
 
 
 data = Datas.data()
@@ -39,9 +38,17 @@ app.layout = html.Div(
         html.Div(
             children=[
                 html.H1(
-                    children="Public sector procurement report, fiscal year 2019",
+                    children="Public sector procurement report in 2019",
                     style={
                         "textAlign": "center",
+                        "text": "#ffffe0",
+                        "background":"#A75C1B",
+                        "margin-left":" 80px",
+                        "margin-top": "10px",
+                        "border-radius": "5px",
+                        "transition":" 0.3s",
+                        "width" : "90vw",
+                        "hover" : "white",
                     },
                 )
             ],
@@ -53,6 +60,15 @@ app.layout = html.Div(
                     children="march - oct 2019",
                     style={
                         "textAlign": "center",
+                        "text": "#ffffe0",
+                        "background":"#723500",
+                        "margin-left":" 45vw",
+                        "margin-top": "10px",
+                        "margin-bottom":"10px",
+                        "border-radius": "5px",
+                        "transition":" 0.3s",
+                        "width" : "10vw",
+                        "hover" : "white",
                     },
                 ),
             ],
@@ -68,7 +84,6 @@ app.layout = html.Div(
                 ),
                 html.Div(
                     [
-                    
                         dbc.Select(
                             options=[
                                 dict(label=val, value=val) for val in list(data.data["2562"].keys())
@@ -76,7 +91,7 @@ app.layout = html.Div(
                             style={
                                 "textAlign": "center",
                                 "color": "#454241",
-                                "margin-top": "5px",
+                                "margin-top": "50px",
                                 
                             },
                             id="month",
@@ -90,7 +105,7 @@ app.layout = html.Div(
                             style={
                                 "textAlign": "center",
                                 "color": "#454241",
-                                "margin-top": "5px",
+                                "margin-top": "10px",
                                 
                             },
                             id="month_p",

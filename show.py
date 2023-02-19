@@ -139,7 +139,7 @@ app.layout = html.Div(
         html.Div(
             children=[
                 html.H1(
-                    children="Hello Dash",
+                    children="Public sector procurement report",
                     style={
                         "textAlign": "center",
                     },
