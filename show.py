@@ -4,7 +4,7 @@ import plotly.express as px
 import pandas
 import numpy
 import dash_bootstrap_components as dbc
-app = Dash(__name__, external_stylesheets=[dbc.themes.CYBORG])
+app = Dash(__name__, external_stylesheets=[dbc.themes.SKETCHY])
 
 month = ['march', 'april', 'may', 'june', 'july', 'aug', 'sep', 'oct']
 # assume you have a "long-form" data frame
@@ -30,7 +30,7 @@ for t in typeName:
     result[t] = r_m
 total_type = pandas.DataFrame(result, index=month)
 
-fig_bar = px.bar(total_type)
+fig_bar = px.bar(total_type, color_discrete_sequence=['#FF99FF', '#CC99FF', '#9999FF','#6699FF', '#3399FF', '#0099FF'])
 
 # sus_list
 sus_list = df[((df['contrct_price'] - df['cost_build']) / df['cost_build']) *100 > 10].sample(10)
@@ -42,9 +42,21 @@ per = 10 # percent ที่อนุญาติให้เสนอได้�
 con_high_cost = len(df[((df['contrct_price'] - df['cost_build']) / df['cost_build']) *100 > per]) # ราคาสัญญา สูง ราคากลาง 
 con_high_proj = len(df[((df['contrct_price'] - df['proj_mny']) / df['proj_mny']) *100 > per]) # ราคาสัญญา สูงกว่า วงเงินงบประมาณ
 
+fig_bar.update_layout(
+    paper_bgcolor="whitesmoke",
+    width=800,
+    height=400
+)
+
 fig_circular = px.pie(
         values=[con_high_cost, con_high_proj],
-        names=["ราคาสัญญา สูง ราคากลาง ", "ราคาสัญญา สูงกว่า วงเงินงบประมาณ"],title="Suspicious category ratio"
+        names=["ราคาสัญญา สูง ราคากลาง ", "ราคาสัญญา สูงกว่า วงเงินงบประมาณ"],title="Suspicious category ratio",
+        color_discrete_sequence=['#AAAAAA', '#DDDDDD']
+)
+fig_circular.update_layout(
+    paper_bgcolor="whitesmoke",
+    width=800,
+    height=400
 )
 
 @app.callback(
@@ -62,11 +74,14 @@ def show_data(month_year='march', Total='10'):
         text=filtered_df['proj_no'],
         mode='markers',
         marker_color=filtered_df['proj_mny'],
+        marker = dict(
+        size =5,
+        line =dict(width=0.5, color='#FFCCFF'))
     ))
 
     fig.update_layout(
         title='Government Construction Location 2019',
-        geo_scope='asia', width=800, height=400
+        geo_scope='asia',title_font_color='black', paper_bgcolor='whitesmoke', width=800, height=400
     )
 
     return fig
@@ -85,9 +100,17 @@ def show_data2(month_year='march'):
         title='Project value in various forms',
         values="proj_mny",
         names="typ_name",
+        color_discrete_sequence=['#33CCFF', '#FFCCFF', '#CCCCFF','#99CCFF', '#66CCFF'],
         # color="sub_category",
     )
 
+    fig.update_layout(
+        title="Project value in various forms",
+        title_font_color='black',
+        paper_bgcolor="whitesmoke",
+        width=800, 
+        height=400
+    )
     return fig
 
 
@@ -100,8 +123,14 @@ def show_data3(typename):
 
     filtered_df = total_type[typename]
     # print(filtered_df)
-    fig = px.line(filtered_df, markers=True)
+    fig = px.line(filtered_df, markers=True ,color_discrete_sequence=['#FF33FF', '#CC33FF', '#CC33CC','#9933CC', '#6633CC', '#663399'])
 
+    fig.update_layout(
+        title_font_color='black',
+        paper_bgcolor="whitesmoke",
+        width=800, 
+        height=400
+    )
     return fig
 
 
@@ -212,14 +241,13 @@ app.layout = html.Div(
                 html.H1(
                     children="Sample Suspicious item",
                     style={
-                        "textAlign": "center",
-                        "color": "white"
+                        "textAlign": "center"
                     },
                 ), 
                 html.Div(sus_print_list)
 
             ],
-            className="col-4",
+            className="row",
         )
 
 
