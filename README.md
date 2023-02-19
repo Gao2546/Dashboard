@@ -11,5 +11,12 @@
 ===============
 ### Data_dash
 
-#### use_data_by_class_T : https://emailpsuac-my.sharepoint.com/:u:/g/personal/6510110513_email_psu_ac_th/EW5gFlnX9GhIjy1V6mrnLl8BcvlXa8C530pxCfst9jB7-g?e=Y2uhQz
-#### In_march_to_oct2562 :  https://emailpsuac-my.sharepoint.com/:u:/g/personal/6510110513_email_psu_ac_th/ET468FgY059IjD1vXXkUWgkBWhZYq0Qxh855n73AF1ATzQ?e=nwlJ0d
+#### use_data_by_class_T : https://emailpsuac-my.sharepoint.com/:u:/g/personal/6510110513_email_psu_ac_th/EW5gFlnX9GhIjy1V6mrnLl8BcvlXa8C530pxCfst9jB7-g?e=Y2uhQz ---> Dashboard1
+#### In_march_to_oct2562 :  https://emailpsuac-my.sharepoint.com/:u:/g/personal/6510110513_email_psu_ac_th/ET468FgY059IjD1vXXkUWgkBWhZYq0Qxh855n73AF1ATzQ?e=nwlJ0d ---> Dashboard2
+
+===============
+### Dashboard_server
+
+#### Dashboard1 : MyDashBoard/Dashboard.py
+
+#### Dashboard2 : show.py
