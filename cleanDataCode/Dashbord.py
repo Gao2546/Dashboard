@@ -8,12 +8,11 @@ app = Dash(__name__, external_stylesheets=[dbc.themes.CYBORG])
 
 colors = {"background": "#111111", "text": "#7FDBFF"}
 
-# assume you have a "long-form" data frame
-# see https://plotly.com/python/px-arguments/ for more options
+
 data = Datas.data()
 l_data = data.add_all_in_folder("use_data_by_class_T")
 
-# power = df[df["emission_type"].str.contains("ภาคพลังงาน")]
+
 
 
 @app.callback(
@@ -24,14 +23,13 @@ l_data = data.add_all_in_folder("use_data_by_class_T")
 def show_data(month, month_p):
     print(month, month_p)
     data_ = data.read_data(data.data["2562"][month][month_p]["clean"])
-    # print(filtered_df)
     fig = px.pie(
         data_,
         values="contrct_price",
         names="subdep_class",
-        # color="sub_category",
     )
-    # fig.update_layout(transition_duration=500)
+    fig.update_layout(transition_duration=500,paper_bgcolor='black',height = 500,legend_font_color="white",uniformtext_minsize=12, uniformtext_mode='hide')
+    fig.update_traces(textposition='inside', textinfo='percent+label')
 
     return fig
 
@@ -70,17 +68,10 @@ app.layout = html.Div(
                 ),
                 html.Div(
                     [
-                        # dcc.Dropdown(
-                        #     data.data["2562"].keys(),
-                        #     id="month",
-                        # ),
-                        # dcc.Dropdown(
-                        #     data.data["2562"]["may"].keys(),
-                        #     id="month_p",
-                        # ),
+                    
                         dbc.Select(
                             options=[
-                                dict(label=be, value=be) for be in list(data.data["2562"].keys())
+                                dict(label=val, value=val) for val in list(data.data["2562"].keys())
                             ],
                             style={
                                 "textAlign": "center",
@@ -93,8 +84,8 @@ app.layout = html.Div(
                         ),
                         dbc.Select(
                             options=[
-                                dict(label=et, value=et)
-                                for et in list(data.data["2562"]["may"].keys())
+                                dict(label=word, value=val)
+                                for word,val in zip(["ครึ่งเดือนแรก","ครึ่งเดือนหลัง"],list(data.data["2562"]["may"].keys()))
                             ],
                             style={
                                 "textAlign": "center",
